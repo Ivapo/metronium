@@ -6,6 +6,7 @@
   padding: 0;
 }
 
+/* ── Nium (default) ── */
 :root {
   --bg: #1a1a2e;
   --surface: #16213e;
@@ -15,6 +16,83 @@
   --dot-bg: #2a2a4a;
   --dot-active: #e94560;
   --dot-accent: #ff6b81;
+  --accent-glow: rgba(233, 69, 96, 0.5);
+  --accent-glow-strong: rgba(255, 107, 129, 0.6);
+  --accent-hover: rgba(233, 69, 96, 0.1);
+  --accent-active: rgba(233, 69, 96, 0.2);
+  --btn-radius: 50%;
+}
+
+/* ── Dark ── */
+[data-theme="dark"] {
+  --bg: #09090b;
+  --surface: #27272a;
+  --accent: #89b4fa;
+  --text: #ffffff;
+  --text-dim: #a1a1aa;
+  --dot-bg: #27272a;
+  --dot-active: #89b4fa;
+  --dot-accent: #b4d0fc;
+  --accent-glow: rgba(137, 180, 250, 0.5);
+  --accent-glow-strong: rgba(180, 208, 252, 0.6);
+  --accent-hover: rgba(137, 180, 250, 0.1);
+  --accent-active: rgba(137, 180, 250, 0.2);
+  --btn-radius: 50%;
+}
+
+/* ── Light ── */
+[data-theme="light"] {
+  --bg: #faf6e9;
+  --surface: #f0eacd;
+  --accent: #1e66f5;
+  --text: #7b2d8e;
+  --text-dim: #2563eb;
+  --dot-bg: #e4dfc6;
+  --dot-active: #1e66f5;
+  --dot-accent: #5a8ff7;
+  --accent-glow: rgba(30, 102, 245, 0.4);
+  --accent-glow-strong: rgba(90, 143, 247, 0.5);
+  --accent-hover: rgba(30, 102, 245, 0.1);
+  --accent-active: rgba(30, 102, 245, 0.2);
+  --btn-radius: 50%;
+}
+
+/* ── 3.1 ── */
+[data-theme="3.1"] {
+  --bg: #001e3d;
+  --surface: #002b5c;
+  --accent: #ffc600;
+  --text: #e0e0e0;
+  --text-dim: #88aacc;
+  --dot-bg: #002b5c;
+  --dot-active: #ffc600;
+  --dot-accent: #ffe066;
+  --accent-glow: rgba(255, 198, 0, 0.5);
+  --accent-glow-strong: rgba(255, 224, 102, 0.6);
+  --accent-hover: rgba(255, 198, 0, 0.1);
+  --accent-active: rgba(255, 198, 0, 0.2);
+  --btn-radius: 0;
+
+  font-family: "MesloLGS NF", "SF Mono", "Menlo", "Consolas", monospace;
+}
+
+/* ── TUI ── */
+[data-theme="tui"] {
+  --bg: #0f0f17;
+  --surface: #0a0a12;
+  --accent: #7aa2f7;
+  --text: #c0caf5;
+  --text-dim: #565f89;
+  --dot-bg: #292e42;
+  --dot-active: #7aa2f7;
+  --dot-accent: #a9c4fa;
+  --accent-glow: rgba(122, 162, 247, 0.5);
+  --accent-glow-strong: rgba(169, 196, 250, 0.6);
+  --accent-hover: rgba(122, 162, 247, 0.1);
+  --accent-active: rgba(122, 162, 247, 0.2);
+  --btn-radius: 0;
+
+  font-family: "MesloLGS NF", "SF Mono", "Menlo", "Consolas", monospace;
 }
 
 html,
@@ -44,6 +122,29 @@ body {
   color: var(--text-dim);
 }
 
+/* Theme toggle */
+.theme-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid var(--text-dim);
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: var(--btn-radius);
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-btn:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
 .beat-indicators {
   display: flex;
   gap: 1.5rem;
@@ -52,7 +153,7 @@ body {
 .beat-dot {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: var(--btn-radius);
   background: var(--dot-bg);
   cursor: pointer;
   transition: background 0.08s, transform 0.08s, box-shadow 0.08s;
@@ -65,19 +166,19 @@ body {
 .beat-dot.active {
   background: var(--dot-active);
   transform: scale(1.25);
-  box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .beat-dot.accent.active {
   background: var(--dot-accent);
-  box-shadow: 0 0 24px rgba(255, 107, 129, 0.6);
+  box-shadow: 0 0 24px var(--accent-glow-strong);
 }
 
 /* Start/Stop */
 .start-stop-btn {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: var(--btn-radius);
   border: 3px solid var(--accent);
   background: transparent;
   color: var(--text);
@@ -90,7 +191,7 @@ body {
 }
 
 .start-stop-btn:hover {
-  background: rgba(233, 69, 96, 0.1);
+  background: var(--accent-hover);
 }
 
 .start-stop-btn:active {
@@ -174,7 +275,7 @@ body {
 .bpm-btn {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: var(--btn-radius);
   border: 2px solid var(--text-dim);
   background: transparent;
   color: var(--text);
@@ -189,11 +290,11 @@ body {
 
 .bpm-btn:hover {
   border-color: var(--accent);
-  background: rgba(233, 69, 96, 0.1);
+  background: var(--accent-hover);
 }
 
 .bpm-btn:active {
-  background: rgba(233, 69, 96, 0.2);
+  background: var(--accent-active);
 }
 
 #bpm-slider {
@@ -258,4 +359,3 @@ body {
 .footer a:hover {
   opacity: 1;
 }
-

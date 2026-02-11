@@ -1,6 +1,15 @@
 import { Metronome } from "./metronome.ts";
+import { initTheme, cycleTheme, getTheme } from "./theme.ts";
 
 export function initUI(metronome: Metronome): void {
+  // Theme
+  initTheme();
+  const themeBtn = document.getElementById("theme-toggle")!;
+  themeBtn.textContent = getTheme();
+  themeBtn.addEventListener("click", () => {
+    const next = cycleTheme();
+    themeBtn.textContent = next;
+  });
   const bpmValue = document.getElementById("bpm-value")!;
   const bpmSlider = document.getElementById("bpm-slider") as HTMLInputElement;
   const bpmDown = document.getElementById("bpm-down")!;
