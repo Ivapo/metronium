@@ -147,7 +147,10 @@ body {
 
 .beat-indicators {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: calc(100vw - 2rem);
 }
 
 .beat-dot {
