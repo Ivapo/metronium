@@ -54,6 +54,7 @@ body {
   height: 48px;
   border-radius: 50%;
   background: var(--dot-bg);
+  cursor: pointer;
   transition: background 0.08s, transform 0.08s, box-shadow 0.08s;
 }
 
@@ -105,6 +106,7 @@ body {
 .controls-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
   min-width: 220px;
 }
@@ -117,6 +119,7 @@ body {
 .control-group {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
 }
 
@@ -148,6 +151,9 @@ body {
   font-weight: 700;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+  display: inline-block;
+  min-width: 3ch;
+  text-align: right;
 }
 
 .bpm-label {
@@ -235,5 +241,21 @@ body {
 .time-sig-controls {
   display: flex;
   gap: 0.5rem;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.footer a {
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.footer a:hover {
+  opacity: 1;
 }
 

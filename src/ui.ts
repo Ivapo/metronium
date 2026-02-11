@@ -31,8 +31,12 @@ export function initUI(metronome: Metronome): void {
     for (let i = 0; i < metronome.beatsPerMeasure; i++) {
       const dot = document.createElement("div");
       dot.className = "beat-dot";
-      if (i === 0) dot.classList.add("accent");
+      if (metronome.accents.has(i)) dot.classList.add("accent");
       dot.dataset["index"] = String(i);
+      dot.addEventListener("click", () => {
+        metronome.toggleAccent(i);
+        dot.classList.toggle("accent", metronome.accents.has(i));
+      });
       beatContainer.appendChild(dot);
     }
   }

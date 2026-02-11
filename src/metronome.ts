@@ -18,6 +18,7 @@ export class Metronome {
   private _beatsPerMeasure = 4;
   private _subdivisions = 1;
   private _volume = 0.8;
+  private _accents: Set<number> = new Set([0]);
   private currentSubdiv = 0;
   private onBeat: BeatCallback | null = null;
 
@@ -39,6 +40,22 @@ export class Metronome {
 
   set beatsPerMeasure(value: number) {
     this._beatsPerMeasure = value;
+    // Remove accents that are out of range
+    for (const a of this._accents) {
+      if (a >= value) this._accents.delete(a);
+    }
+  }
+
+  get accents(): Set<number> {
+    return this._accents;
+  }
+
+  toggleAccent(beat: number): void {
+    if (this._accents.has(beat)) {
+      this._accents.delete(beat);
+    } else {
+      this._accents.add(beat);
+    }
   }
 
   get subdivisions(): number {
@@ -88,7 +105,7 @@ export class Metronome {
       osc.frequency.value = 600;
       gain.gain.value = 0.25 * this._volume;
     } else {
-      const isAccent = beat === 0;
+      const isAccent = this._accents.has(beat);
       osc.frequency.value = isAccent ? 1000 : 800;
       gain.gain.value = (isAccent ? 1.0 : 0.5) * this._volume;
     }
