@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metronium</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="title">Metronium</h1>
+
+      <button id="start-stop" class="start-stop-btn">Start</button>
+
+      <div id="beat-indicators" class="beat-indicators"></div>
+
+      <div class="controls-section">
+        <div class="control-group">
+          <label class="control-label">Tempo</label>
+          <div class="tempo-row">
+            <div class="bpm-display">
+              <span id="bpm-value">120</span>
+              <span class="bpm-label">BPM</span>
+            </div>
+            <div class="bpm-controls">
+              <button id="bpm-down" class="bpm-btn" aria-label="Decrease BPM">−</button>
+              <input
+                id="bpm-slider"
+                type="range"
+                min="20"
+                max="400"
+                value="120"
+                aria-label="BPM"
+              />
+              <button id="bpm-up" class="bpm-btn" aria-label="Increase BPM">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <div class="control-group">
+            <label class="control-label">Beats per Bar</label>
+            <div class="time-sig-row">
+              <span id="ts-numerator" class="time-sig-display">4</span>
+              <div class="time-sig-controls">
+                <button id="ts-down" class="bpm-btn" aria-label="Fewer beats">−</button>
+                <button id="ts-up" class="bpm-btn" aria-label="More beats">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Beats per Beat</label>
+            <div class="time-sig-row">
+              <span id="subdiv-display" class="time-sig-display">1</span>
+              <div class="time-sig-controls">
+                <button id="subdiv-down" class="bpm-btn" aria-label="Fewer subdivisions">−</button>
+                <button id="subdiv-up" class="bpm-btn" aria-label="More subdivisions">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Volume</label>
+          <div class="tempo-row">
+            <input
+              id="volume-slider"
+              type="range"
+              min="0"
+              max="100"
+              value="80"
+              aria-label="Volume"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
