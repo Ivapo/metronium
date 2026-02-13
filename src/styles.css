@@ -126,6 +126,31 @@ button {
   color: var(--text-dim);
 }
 
+/* Refresh button */
+.refresh-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: 1px solid var(--text-dim);
+  color: var(--text-dim);
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--btn-radius);
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.refresh-btn:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
 /* Theme toggle */
 .theme-btn {
   position: fixed;
