@@ -1,4 +1,4 @@
-const CACHE_NAME = "metronium-v1";
+const CACHE_NAME = "metronium-v2";
 
 const PRECACHE_URLS = [
   "/metronium/",
@@ -31,9 +31,8 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).then((response) => {
+    fetch(event.request)
+      .then((response) => {
         if (
           response.ok &&
           event.request.method === "GET" &&
@@ -45,7 +44,7 @@ self.addEventListener("fetch", (event) => {
           });
         }
         return response;
-      });
-    })
+      })
+      .catch(() => caches.match(event.request))
   );
 });
