@@ -104,6 +104,10 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+button {
+  touch-action: manipulation;
+}
+
 #app {
   display: flex;
   flex-direction: column;
