@@ -350,19 +350,3 @@ button {
   display: flex;
   gap: 0.5rem;
 }
-
-/* Footer */
-.footer {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-.footer a {
-  opacity: 0.7;
-  transition: opacity 0.15s;
-}
-
-.footer a:hover {
-  opacity: 1;
-}

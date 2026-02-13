@@ -83,12 +83,15 @@
       </div>
     </div>
 
-    <footer class="footer">
-      <a href="https://ko-fi.com/K3K81U1IDK" target="_blank" rel="noopener noreferrer">
-        <img height="36" style="border:0px;height:36px;" src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" />
-      </a>
-    </footer>
-
     <script type="module" src="/src/main.ts"></script>
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('ivapo', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': '',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
   </body>
 </html>
